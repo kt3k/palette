@@ -8,6 +8,8 @@ You need to make a file called 'paletteSet.json' in a gist to share on the site.
 
 After creating a gist containing paletteSet.json, then url http://kt3k.github.io/palette/#[your-gist-id] shows your color palette set.
 
+## Field description
+
 ### `author`
 
 The author name of the palette set.
@@ -20,7 +22,7 @@ The description of the palette set.
 
 Array of palettes.
 
-# `palette` object
+## `palette` object
 
 ### `name`
 
