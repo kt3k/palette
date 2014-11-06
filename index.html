@@ -2,6 +2,7 @@
 <head>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/zeroclipboard/dist/ZeroClipboard.min.js"></script>
 
 <style>
 
@@ -28,6 +29,18 @@
 
 .palette-color-group input {
     margin: 2px 0;
+    width: 130px;
+    text-align: center;
+    font-family: "menlo", "monaco", "courier new";
+    font-size: 0.8em;
+}
+
+.palette-color-group button {
+    border: solid 1px rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
+    background-color: transparent;
+    margin: 2px 0;
+    padding: 2px;
     width: 130px;
     text-align: center;
     font-family: "menlo", "monaco", "courier new";
@@ -132,6 +145,8 @@ var fillPaletteSet = function (paletteSet, loadUrl) {
         var pg = makePaletteGroup(data);
         $('#main').append(pg);
     });
+
+    new ZeroClipboard(document.querySelectorAll('.clip'));
 };
 
 var makePaletteGroup = function (data) {
@@ -155,11 +170,20 @@ var makeSingleColor = function (color) {
 
     content.querySelector('.palette-color').style.backgroundColor = color;
 
-    content.querySelector('.hex-name').value = color;
-    content.querySelector('.rgb-name').value = hex2rgb(color).toString();
-    content.querySelector('.hsl-name').value = hex2hsl(color).toString();
+    content.querySelector('.hex-name').textContent = color;
+    content.querySelector('.hex-name').setAttribute('data-clipboard-text', color);
 
-    return document.importNode(t.content, true);
+    var rgb = hex2rgb(color).toString();
+    content.querySelector('.rgb-name').textContent = rgb;
+    content.querySelector('.rgb-name').setAttribute('data-clipboard-text', rgb);
+
+    var hsl = hex2hsl(color).toString();
+    content.querySelector('.hsl-name').textContent = hsl;
+    content.querySelector('.hsl-name').setAttribute('data-clipboard-text', hsl);
+
+    var node = document.importNode(t.content, true);
+
+    return node;
 };
 
 /**
@@ -246,9 +270,9 @@ var hex2hsl = function (hex) {
 <template id="single-color">
   <div class="palette-color-group">
     <div class="palette-color" style="background-color: #999999"></div>
-    <input class="hex-name" type="text" value="#999999" /><br />
-    <input class="rgb-name" type="text" value="rgb(1,1,1)" /><br />
-    <input class="hsl-name" type="text" value="hsl(100,100%,100%)" /><br />
+    <button class="hex-name clip"></button>
+    <button class="rgb-name clip"></button>
+    <button class="hsl-name clip"></button>
   </div>
 </template>
 
