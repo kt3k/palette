@@ -1,0 +1,247 @@
+<html>
+<head>
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+<style>
+
+.navbar {
+    border-radius: 0;
+}
+
+.palette-group {
+    border-radius: 4px;
+    clear: both;
+}
+
+.palette-name {
+    font-weight: bold;
+    color: #959595;
+}
+
+.palette-color-group {
+    width: 160px;
+    height: 200px;
+    float: left;
+    text-align: center;
+}
+
+.palette-color-group input {
+    margin: 2px 0;
+    width: 130px;
+    text-align: center;
+    font-family: "menlo", "monaco", "courier new";
+    font-size: 0.8em;
+}
+
+.palette-color {
+    width: 130px;
+    height: 60px;
+    margin: auto;
+}
+
+</style>
+
+<script>
+
+var paletteSet = {
+    author: 'kt3k',
+    description: 'The color palette for LD project.',
+    palette: [{
+        name: 'grey',
+        description: 'basic colors',
+        colors: [
+            '#111111',
+            '#333333',
+            '#555555',
+            '#888888',
+        ]
+    }, {
+        name: 'blue',
+        description: 'accent colors 1',
+        colors: [
+
+            '#0010cf',
+            '#3040cf'
+        ]
+    }]
+};
+
+$(function () {
+    fillPaletteSet(paletteSet);
+});
+
+var fillPaletteSet = function (paletteSet) {
+
+    $('#main').empty();
+
+    $('#main').append($('<p />').text(paletteSet.description));
+
+    var p = $('<p />')
+        .text('author: ' + paletteSet.author)
+        .css('color', '#9f9f9f')
+        .appendTo('#main');
+
+    $('<span />')
+      .text('export')
+      .css({
+          'color': '77f',
+          'marginLeft': '15px'
+      })
+      .click(function () {
+          alert(JSON.stringify(paletteSet));
+      })
+      .appendTo(p);
+
+    $('<span />')
+      .text('import')
+      .css({
+          'color': '77f',
+          'marginLeft': '15px'
+      })
+      .click(function () {
+          alert('Put the following command on your console.\n\nfillPaletteSet([your json here])');
+      })
+      .appendTo(p);
+
+    var palette = paletteSet.palette;
+    palette.forEach(function (data) {
+        var pg = makePaletteGroup(data);
+        $('#main').append(pg);
+    });
+};
+
+var makePaletteGroup = function (data) {
+    var t = document.querySelector('#color-group');
+    t.content.querySelector('.palette-title').textContent = data.name;
+    t.content.querySelector('.palette-description').textContent = data.description;
+
+    var group = document.importNode(t.content, true);
+
+    data.colors.forEach(function (color) {
+        var sc = makeSingleColor(color);
+        group.appendChild(sc);
+    });
+
+    return group;
+};
+
+var makeSingleColor = function (color) {
+    var t = document.querySelector('#single-color');
+    var content = t.content;
+
+    content.querySelector('.palette-color').style.backgroundColor = color;
+
+    content.querySelector('.hex-name').value = color;
+    content.querySelector('.rgb-name').value = hex2rgb(color).toString();
+    content.querySelector('.hsl-name').value = hex2hsl(color).toString();
+
+    return document.importNode(t.content, true);
+};
+
+/**
+ * @class RGB
+ */
+var RGB = function (r, g, b) {
+    this.r = r;
+    this.g = g;
+    this.b = b;
+};
+
+RGB.prototype.toString = function() {
+    return 'rgb(' + this.r + ',' + this.g + ',' + this.b + ')';
+};
+
+RGB.prototype.toHSL = function() {
+    // from http://stackoverflow.com/a/9493060/1185492
+
+    var r = this.r / 255;
+    var g = this.g / 255;
+    var b = this.b / 255;
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+
+    if (max === min) {
+        h = s = 0; // grey
+    } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+        switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+
+        h /= 6;
+    }
+
+    // scale
+    h = Math.round(h * 360);
+    s = Math.round(s * 100);
+    l = Math.round(l * 100);
+
+    return new HSL(h, s, l);
+};
+
+/**
+ * @class HSL
+ */
+var HSL = function (h, s, l) {
+    this.h = h;
+    this.s = s;
+    this.l = l;
+};
+
+HSL.prototype.toString = function () {
+    return 'hsl(' + this.h + ',' + this.s + '%,' + this.l + '%)';
+};
+
+var hex2rgb = function (hex) {
+    var m = hex.match(/#([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})/);
+    var r = parseInt(m[1], 16);
+    var g = parseInt(m[2], 16);
+    var b = parseInt(m[3], 16);
+    return new RGB(r, g, b);
+};
+
+var hex2hsl = function (hex) {
+    return hex2rgb(hex).toHSL();
+};
+
+
+</script>
+
+<template id="color-group">
+  <div class="palette-group">
+    <h3><span class="palette-title"></span> <small class="palette-description"></small></h3>
+
+    <hr />
+  <div>
+</template>
+
+<template id="single-color">
+  <div class="palette-color-group">
+    <div class="palette-color" style="background-color: #999999"></div>
+    <input class="hex-name" type="text" value="#999999" /><br />
+    <input class="rgb-name" type="text" value="rgb(1,1,1)" /><br />
+    <input class="hsl-name" type="text" value="hsl(100,100%,100%)" /><br />
+  </div>
+</template>
+
+
+</head>
+
+<body>
+
+<header class="navbar navbar-default">
+  <div class="container-fluid">
+    <span class="navbar-brand">Color Palette</span>
+  </div>
+</header>
+
+<div id="main" class="container">
+</div>
+
+</body>
+</html>
