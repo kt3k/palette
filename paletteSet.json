@@ -1,0 +1,32 @@
+{
+    "author": "example-user",
+    "description": "An example color palette.",
+    "palette": [
+        {
+            "name": "grey",
+            "description": "basic colors",
+            "colors": [
+                "#111111",
+                "#333333",
+                "#555555",
+                "#888888"
+            ]
+        },
+        {
+            "name": "blue",
+            "description": "accent colors 1",
+            "colors": [
+                "#0010cf",
+                "#3040cf"
+            ]
+        },
+        {
+            "name": "red",
+            "description": "accent colors 2",
+            "colors": [
+                "#cf1000",
+                "#cf4030"
+            ]
+        }
+    ]
+}

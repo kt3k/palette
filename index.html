@@ -56,34 +56,47 @@
 
 <script>
 
-var paletteSet = {
-    author: 'kt3k',
-    description: 'The color palette for LD project.',
-    palette: [{
-        name: 'grey',
-        description: 'basic colors',
-        colors: [
-            '#111111',
-            '#333333',
-            '#555555',
-            '#888888',
-        ]
-    }, {
-        name: 'blue',
-        description: 'accent colors 1',
-        colors: [
+var main = function () {
+    var id = location.hash.substring(1);
 
-            '#0010cf',
-            '#3040cf'
-        ]
-    }]
+    if (id !== '') {
+        loadFromGist(id);
+    } else {
+        $.getJSON('./paletteSet.json').done(function (data) {
+            fillPaletteSet(data, './paletteSet.json');
+        });
+    }
+
 };
 
-$(function () {
-    fillPaletteSet(paletteSet);
-});
+$(main);
+$(window).on('hashchange', main);
 
-var fillPaletteSet = function (paletteSet) {
+var loadFromGist = function (id) {
+    var gistAPI = 'https://api.github.com/gists/';
+
+    $.getJSON(gistAPI + id).done(function (data) {
+
+        for (var file in data.files) {
+            if (file === 'paletteSet.json') {
+                // found palette data in gist
+                var content = data.files[file].content;
+
+                fillPaletteSet(JSON.parse(content), data.html_url);
+
+                return;
+            }
+        }
+
+        // found gist, but no paletteSet.json
+        fillPaletteSet({author: '-', description: 'paletteSet.json not found', palette:[]}, data.html_url);
+
+    }).fail(function () {
+        fillPaletteSet({author: '-', description: 'no such gist id: "' + id + '"', palette:[]}, gistAPI + id);
+    });
+};
+
+var fillPaletteSet = function (paletteSet, loadUrl) {
 
     $('#main').empty();
 
@@ -109,6 +122,10 @@ var fillPaletteSet = function (paletteSet) {
           alert('Put the following command on your console.\n\nfillPaletteSet([your json here])');
       })
       .appendTo(p);
+
+    var load = $('<p />').text('loaded from ').appendTo('#main');
+    $('<a />')
+      .attr('href', loadUrl).attr('target', '_blank').text(loadUrl).appendTo(load);
 
     var palette = paletteSet.palette;
     palette.forEach(function (data) {
