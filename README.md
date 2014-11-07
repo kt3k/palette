@@ -35,3 +35,7 @@ The description of the palette.
 ### `colors`
 
 The array of colors ( in hex format, e.g. #FFFFFF, #000000, #1f0e55 etc )
+
+# Examples
+
+- http://kt3k.github.io/palette/#5aac98c2e67d30791c27
