@@ -2,6 +2,7 @@
 <head>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/zeroclipboard/dist/ZeroClipboard.min.js"></script>
 
 <style>
@@ -147,6 +148,15 @@ var fillPaletteSet = function (paletteSet, loadUrl) {
     });
 
     new ZeroClipboard(document.querySelectorAll('.clip'));
+
+    $('.clip')
+      .tooltip()
+      .click(function () {
+          var id = $(this).attr('aria-describedby');
+          var hint = $(this).data('copied-hint');
+
+          $('#' + id + ' .tooltip-inner').text(hint);
+      });
 };
 
 var makePaletteGroup = function (data) {
@@ -260,20 +270,23 @@ var hex2hsl = function (hex) {
 </script>
 
 <template id="color-group">
+
   <div class="palette-group">
     <h3><span class="palette-title"></span> <small class="palette-description"></small></h3>
-
     <hr />
   <div>
+
 </template>
 
 <template id="single-color">
+
   <div class="palette-color-group">
     <div class="palette-color" style="background-color: #999999"></div>
-    <button class="hex-name clip"></button>
-    <button class="rgb-name clip"></button>
-    <button class="hsl-name clip"></button>
+    <button class="hex-name clip" data-toggle="tooltip" data-placement="right" title="Copy to clipboard" data-copied-hint="Copied!"></button>
+    <button class="rgb-name clip" data-toggle="tooltip" data-placement="right" title="Copy to clipboard" data-copied-hint="Copied!"></button>
+    <button class="hsl-name clip" data-toggle="tooltip" data-placement="right" title="Copt to clipboard" data-copied-hint="Copied!"></button>
   </div>
+
 </template>
 
 
