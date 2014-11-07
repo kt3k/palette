@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>Color Palette</title>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -107,6 +108,7 @@ var fillPaletteSet = function (paletteSet, loadUrl) {
     $('#main').empty();
 
     $('#main').append($('<p />').text(paletteSet.description));
+    $('title').text(paletteSet.description);
 
     var p = $('<p />').appendTo('#main');
 
