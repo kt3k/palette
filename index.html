@@ -58,14 +58,6 @@
     color: #9f9f9f;
 }
 
-.control {
-    color: #afafaf;
-}
-
-.left15 {
-    margin-left: 15px;
-}
-
 </style>
 
 <script>
@@ -121,20 +113,6 @@ var fillPaletteSet = function (paletteSet, loadUrl) {
     $('<span />')
       .text('author: ' + paletteSet.author)
       .addClass('author')
-      .appendTo(p);
-
-    $('<span />')
-      .text('export')
-      .addClass('control left15')
-      .click(function () { alert(JSON.stringify(paletteSet)); })
-      .appendTo(p);
-
-    $('<span />')
-      .text('import')
-      .addClass('control left15')
-      .click(function () {
-          alert('Put the following command on your console.\n\nfillPaletteSet([your json here])');
-      })
       .appendTo(p);
 
     var load = $('<p />').text('loaded from ').appendTo('#main');
