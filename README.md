@@ -40,5 +40,7 @@ The array of colors ( in hex format, e.g. #FFFFFF, #000000, #1f0e55 etc )
 
 - Color Palette for Google Material Design
   - http://kt3k.github.io/palette/#135988589b185740866d
-- Random example
-  - http://kt3k.github.io/palette/#5aac98c2e67d30791c27
+- Color palette of JS logo
+  - http://kt3k.github.io/palette/#5a7d465565523a1de460
+- Color palette of Raspberry Pi logo
+  - http://kt3k.github.io/palette/#461202729e8fa8e0676d
