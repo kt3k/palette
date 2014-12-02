@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 var express = require('express');
 var fs = require('fs');
 
@@ -27,11 +25,14 @@ app.get('/paletteSet.json', function (req, res) {
 
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
-var server = app.listen(3000, function () {
 
-    var host = server.address().address
-    var port = server.address().port
+module.exports.serve = function (port) {
+    var server = app.listen(port || 3000, function () {
 
-    console.log('Palette running at http://%s:%s', host, port)
+        var host = server.address().address
+        var port = server.address().port
 
-});
+        console.log('Palette running at http://%s:%s', host, port)
+
+    });
+};
