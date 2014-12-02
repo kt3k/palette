@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "paletteSet.json viewer",
   "main": "index.js",
+  "repository": "https://github.com/kt3k/palette.git",
   "scripts": {
     "test": "jshint index.js"
   },
