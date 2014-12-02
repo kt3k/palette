@@ -1,5 +1,5 @@
 {
-  "name": "palette",
+  "name": "palette-set",
   "version": "0.1.0",
   "description": "paletteSet.json viewer",
   "main": "index.js",
