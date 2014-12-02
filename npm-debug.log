@@ -1,0 +1,105 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/kt3k/.nvm/v0.10.29/bin/node',
+1 verbose cli   '/Users/kt3k/.nvm/v0.10.29/bin/npm',
+1 verbose cli   'publish',
+1 verbose cli   '.' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/kt3k/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/Users/kt3k/.npm/palette/0.0.1/package.tgz', '.' ]
+11 verbose tarball /Users/kt3k/.npm/palette/0.0.1/package.tgz
+12 verbose folder .
+13 info prepublish palette@0.0.1
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/kt3k/.npm/1f1177db-tar.lock
+16 silly lockFile e962aed0-3k-npm-palette-0-0-1-package-tgz tar:///Users/kt3k/.npm/palette/0.0.1/package.tgz
+17 verbose lock tar:///Users/kt3k/.npm/palette/0.0.1/package.tgz /Users/kt3k/.npm/e962aed0-3k-npm-palette-0-0-1-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile e962aed0-3k-npm-palette-0-0-1-package-tgz tar:///Users/kt3k/.npm/palette/0.0.1/package.tgz
+21 silly lockFile e962aed0-3k-npm-palette-0-0-1-package-tgz tar:///Users/kt3k/.npm/palette/0.0.1/package.tgz
+22 silly lockFile 2ee0122f-s-kt3k-npm-palette-0-0-1-package /Users/kt3k/.npm/palette/0.0.1/package
+23 verbose lock /Users/kt3k/.npm/palette/0.0.1/package /Users/kt3k/.npm/2ee0122f-s-kt3k-npm-palette-0-0-1-package.lock
+24 silly lockFile 2ee0122f-s-kt3k-npm-palette-0-0-1-package /Users/kt3k/.npm/palette/0.0.1/package
+25 silly lockFile 2ee0122f-s-kt3k-npm-palette-0-0-1-package /Users/kt3k/.npm/palette/0.0.1/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { name: 'palette',
+28 silly publish   version: '0.0.1',
+28 silly publish   description: 'paletteSet.json viewer',
+28 silly publish   main: 'index.js',
+28 silly publish   repository: { type: 'git', url: 'https://github.com/kt3k/palette.git' },
+28 silly publish   scripts: { test: 'jshint index.js' },
+28 silly publish   bin: { palette: './index.js' },
+28 silly publish   author:
+28 silly publish    { name: 'Yoshiya Hinosawa',
+28 silly publish      email: 'stibium121@gmail.com',
+28 silly publish      url: 'https://twitter.com/kt3k' },
+28 silly publish   license: 'MIT',
+28 silly publish   dependencies: { express: '^4.10.4' },
+28 silly publish   readme: '# palette v0.0.1\n\n- example: http://kt3k.github.io/palette/#962956462228bb8911ed\n\n# paletteSet.json\n\nYou need to make a file called \'paletteSet.json\' in a gist to share on the site.\n\nAfter creating a gist containing paletteSet.json, then url http://kt3k.github.io/palette/#[your-gist-id] shows your color palette set.\n\n## Field description\n\n### `author`\n\nThe author name of the palette set.\n\n### `description`\n\nThe description of the palette set.\n\n### `palette`\n\nArray of palettes.\n\n## `palette` object\n\n### `name`\n\nThe name of the palette.\n\n### `description`\n\nThe description of the palette.\n\n### `colors`\n\nThe array of colors ( in hex format, e.g. #FFFFFF, #000000, #1f0e55 etc )\n\n# Examples\n\n- Color Palette for Google Material Design\n  - http://kt3k.github.io/palette/#135988589b185740866d\n- Color palette of JS logo\n  - http://kt3k.github.io/palette/#5a7d465565523a1de460\n- Color palette of Raspberry Pi logo\n  - http://kt3k.github.io/palette/#461202729e8fa8e0676d\n',
+28 silly publish   readmeFilename: 'README.md',
+28 silly publish   gitHead: 'f6233d2d12e7d297894f16e4f0270f7dce0a0aa4',
+28 silly publish   bugs: { url: 'https://github.com/kt3k/palette/issues' },
+28 silly publish   homepage: 'https://github.com/kt3k/palette',
+28 silly publish   _id: 'palette@0.0.1',
+28 silly publish   _shasum: '1f40b868614a3532f97d757e9ded08b7ea83222e',
+28 silly publish   _from: '.' }
+29 verbose url raw palette
+30 verbose url resolving [ 'https://registry.npmjs.org/', './palette' ]
+31 verbose url resolved https://registry.npmjs.org/palette
+32 info trying registry request attempt 1 at 22:54:12
+33 http PUT https://registry.npmjs.org/palette
+34 http 403 https://registry.npmjs.org/palette
+35 verbose headers { date: 'Tue, 02 Dec 2014 13:54:13 GMT',
+35 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+35 verbose headers   'content-type': 'application/json',
+35 verbose headers   'cache-control': 'max-age=60',
+35 verbose headers   'content-length': '3197',
+35 verbose headers   'accept-ranges': 'bytes',
+35 verbose headers   via: '1.1 varnish',
+35 verbose headers   'x-served-by': 'cache-ty66-TYO',
+35 verbose headers   'x-cache': 'MISS',
+35 verbose headers   'x-cache-hits': '0',
+35 verbose headers   'x-timer': 'S1417528452.911624,VS0,VE221',
+35 verbose headers   'keep-alive': 'timeout=10, max=50',
+35 verbose headers   connection: 'Keep-Alive' }
+36 error publish Failed PUT 403
+37 error Error: forbidden cannot modify pre-existing version: 0.0.1
+37 error old={"name":"palette","version":"0.0.1","description":"Image color palette with node-canvas","keywords":["palette","color","image","sample","canvas","photo"],"author":{"name":"TJ Holowaychuk","email":"tj@vision-media.ca"},"devDependencies":{"canvas":"0.8.x"},"main":"index","engines":{"node":"0.6.x"},"_npmUser":{"name":"tjholowaychuk","email":"tj@vision-media.ca"},"_id":"palette@0.0.1","dependencies":{},"_engineSupported":true,"_npmVersion":"1.0.106","_nodeVersion":"v0.6.6","_defaultsLoaded":true,"dist":{"shasum":"e4f453bfdf4e23fd67ac2802a2abefba8866d47d","tarball":"http://registry.npmjs.org/palette/-/palette-0.0.1.tgz"},"maintainers":[{"name":"tjholowaychuk","email":"tj@vision-media.ca"}]}
+37 error new={"name":"palette","version":"0.0.1","description":"paletteSet.json viewer","main":"index.js","repository":{"type":"git","url":"https://github.com/kt3k/palette.git"},"scripts":{"test":"jshint index.js"},"bin":{"palette":"./index.js"},"author":{"name":"Yoshiya Hinosawa","email":"stibium121@gmail.com","url":"https://twitter.com/kt3k"},"license":"MIT","dependencies":{"express":"^4.10.4"},"readme":"# palette v0.0.1\u000a\u000a- example: http://kt3k.github.io/palette/#962956462228bb8911ed\u000a\u000a# paletteSet.json\u000a\u000aYou need to make a file called 'paletteSet.json' in a gist to share on the site.\u000a\u000aAfter creating a gist containing paletteSet.json, then url http://kt3k.github.io/palette/#[your-gist-id] shows your color palette set.\u000a\u000a## Field description\u000a\u000a### `author`\u000a\u000aThe author name of the palette set.\u000a\u000a### `description`\u000a\u000aThe description of the palette set.\u000a\u000a### `palette`\u000a\u000aArray of palettes.\u000a\u000a## `palette` object\u000a\u000a### `name`\u000a\u000aThe name of the palette.\u000a\u000a### `description`\u000a\u000aThe description of the palette.\u000a\u000a### `colors`\u000a\u000aThe array of colors ( in hex format, e.g. #FFFFFF, #000000, #1f0e55 etc )\u000a\u000a# Examples\u000a\u000a- Color Palette for Google Material Design\u000a  - http://kt3k.github.io/palette/#135988589b185740866d\u000a- Color palette of JS logo\u000a  - http://kt3k.github.io/palette/#5a7d465565523a1de460\u000a- Color palette of Raspberry Pi logo\u000a  - http://kt3k.github.io/palette/#461202729e8fa8e0676d\u000a","readmeFilename":"README.md","gitHead":"f6233d2d12e7d297894f16e4f0270f7dce0a0aa4","bugs":{"url":"https://github.com/kt3k/palette/issues"},"homepage":"https://github.com/kt3k/palette","_id":"palette@0.0.1","_shasum":"1f40b868614a3532f97d757e9ded08b7ea83222e","_from":".","_npmVersion":"1.4.14","_npmUser":{"name":"kt3k","email":"stibium121@gmail.com"},"maintainers":[{"name":"kt3k","email":"stibium121@gmail.com"}],"dist":{"shasum":"1f40b868614a3532f97d757e9ded08b7ea83222e","tarball":"http://registry.npmjs.org/palette/-/palette-0.0.1.tgz"}}: palette
+37 error     at RegClient.<anonymous> (/Users/kt3k/.nvm/v0.10.29/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:274:14)
+37 error     at Request._callback (/Users/kt3k/.nvm/v0.10.29/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:212:65)
+37 error     at Request.self.callback (/Users/kt3k/.nvm/v0.10.29/lib/node_modules/npm/node_modules/request/request.js:123:22)
+37 error     at Request.emit (events.js:98:17)
+37 error     at Request.<anonymous> (/Users/kt3k/.nvm/v0.10.29/lib/node_modules/npm/node_modules/request/request.js:893:14)
+37 error     at Request.emit (events.js:117:20)
+37 error     at IncomingMessage.<anonymous> (/Users/kt3k/.nvm/v0.10.29/lib/node_modules/npm/node_modules/request/request.js:844:12)
+37 error     at IncomingMessage.emit (events.js:117:20)
+37 error     at _stream_readable.js:929:16
+37 error     at process._tickCallback (node.js:419:13)
+38 error If you need help, you may report this *entire* log,
+38 error including the npm and node versions, at:
+38 error     <http://github.com/npm/npm/issues>
+39 error System Darwin 13.4.0
+40 error command "/Users/kt3k/.nvm/v0.10.29/bin/node" "/Users/kt3k/.nvm/v0.10.29/bin/npm" "publish" "."
+41 error cwd /Users/kt3k/Dropbox/js-works/color-palette
+42 error node -v v0.10.29
+43 error npm -v 1.4.14
+44 verbose exit [ 1, true ]
