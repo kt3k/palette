@@ -1,4 +1,4 @@
-# palette-set v0.1.4
+# palette-set v0.1.5
 
 - example: http://kt3k.github.io/palette/#962956462228bb8911ed
 
